@@ -20,14 +20,24 @@ const userEvents = {
         alert(err.message);
       }
     });
+  },
+  changeTabsPosition({ context }, event) {
+    context.Meteor.call('posts.categories.position', event.target.value, (err, res) => {
+      if (err) {
+        alert(err.message);
+      }
+    });
   }
 };
 
 const data = ({ context }, onData) => {
   const { Collections } = context;
   const pkg = Collections.Packages.findOne({ name: 'posts' }) || {};
-  const configs = pkg.configs || {};
-  onData(null, { categories: configs.categories || [] });
+  const configs = pkg.configs || { UI: '' };
+  onData(null, {
+    categories: configs.categories || [],
+    position: configs.UI.categoriesPosition || ''
+  });
 };
 
 const depsToProps = (context, actions) => ({

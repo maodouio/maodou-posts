@@ -4,11 +4,16 @@
   height: 100px;
 }
 .posts-tab {
+  z-index: 1;
   position: fixed;
   bottom: 0;
   height: 40px;
   width: 100%;
   background: #41B050;
+  &.top {
+    top: 51px;
+    bottom: initial;
+  }
 }
 .flex-container {
   padding: 0;

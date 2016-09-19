@@ -39,6 +39,11 @@ export default (context) => {
       Posts.update({ category }, {
         $set: { category: '' }
       });
+    },
+    'posts.categories.position'(category) {
+      Packages.update({ name: 'posts' }, {
+        $set: { 'configs.UI.categoriesPosition': category }
+      })
     }
   });
 };

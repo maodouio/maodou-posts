@@ -6,7 +6,12 @@ import Loading from 'client/components/common/loading';
 export default (props) => {
   const T = props.context.T;
   return (
-    <div>
+    <div style={{ paddingTop: '90px' }}>
+      {
+        props.configs && props.configs.UI.categoriesPosition === 'top' ?
+          <Tabs position="top" /> :
+          <div />
+      }
       <div className="container">
         <div className="row" style={{ marginTop: '25px' }}>
           {
@@ -51,7 +56,11 @@ export default (props) => {
           }
         </div>
       </div>
-      <Tabs />
+      {
+        props.configs && props.configs.UI.categoriesPosition === 'bottom' ?
+          <Tabs position="bottom" /> :
+          <div />
+      }
     </div>
   );
 }
