@@ -3,7 +3,7 @@ import Loading from 'client/components/common/loading';
 
 export default (props) => {
   return (
-    <div className="container">
+    <div className="container" style={{ paddingTop: '60px'}}>
       <div className="row">
         <div className="col-lg-12">
           {
