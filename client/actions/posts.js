@@ -4,6 +4,9 @@ export default {
   addCover(context, url) {
     return { type: 'ADD_POST_COVER', url };
   },
+  changeCategory(context, cate) {
+    return { type: 'CHANGE_POSTS_CATEGORY', cate };
+  },
   addPost(context, category, coverUrl, title, content) {
     return () => {
       if (!coverUrl) {

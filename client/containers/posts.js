@@ -14,9 +14,9 @@ const userEvents = {
   }
 };
 
-const subscription = ({ context }, onData) => {
+const subscription = ({ context, category }, onData) => {
   const { Meteor, Collections } = context;
-  if (Meteor.subscribe('posts.list').ready()) {
+  if (Meteor.subscribe('posts.list', category).ready()) {
     const posts = Collections.Posts.find().fetch();
     onData(null, {
       posts: { status: 'ready', data: posts }
@@ -28,6 +28,10 @@ const subscription = ({ context }, onData) => {
   }
 };
 
+const mapStateToProps = (state) => ({
+  category: state.postsCategory
+});
+
 const depsToProps = (context, actions) => ({
   context
 });
@@ -35,5 +39,6 @@ const depsToProps = (context, actions) => ({
 export default composeAll(
   withHandlers(userEvents),
   withTracker(subscription),
+  withRedux(mapStateToProps),
   useDeps(depsToProps)
 )(Posts);

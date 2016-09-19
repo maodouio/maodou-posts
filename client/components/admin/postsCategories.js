@@ -5,7 +5,7 @@ import Loading from 'client/components/common/loading';
 
 export default (props) => {
   return (
-    <div className="row">
+    <div className="admin-package-wrapper row">
       <div className="col-sm-12">
         <h1>Posts categories</h1>
         {

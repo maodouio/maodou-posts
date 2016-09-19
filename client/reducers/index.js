@@ -6,5 +6,13 @@ export default {
       default:
         return state;
     }
+  },
+  postsCategory(state = '', action) {
+    switch (action.type){
+      case 'CHANGE_POSTS_CATEGORY':
+        return action.cate;
+      default:
+        return state;
+    }
   }
 };

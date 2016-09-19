@@ -3,7 +3,7 @@ import LaddaButton from 'react-ladda';
 
 export default (props) => {
   return (
-    <div className="row">
+    <div className="admin-package-wrapper row">
       <div className="col-sm-12">
         <h1>Add Post</h1>
         <form onSubmit={props.submitNewPost}>
