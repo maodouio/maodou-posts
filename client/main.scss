@@ -9,10 +9,19 @@
   bottom: 0;
   height: 40px;
   width: 100%;
-  background: #41B050;
+
   &.top {
     top: 51px;
     bottom: initial;
+  }
+  &.green {
+    background: #41B050;
+  }
+  &.red {
+    background: #a42e25;
+  }
+  &.black {
+    background: #151414;
   }
 }
 .flex-container {

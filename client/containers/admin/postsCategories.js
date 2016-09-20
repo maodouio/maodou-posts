@@ -24,7 +24,33 @@ const userEvents = {
   changeTabsPosition({ context }, event) {
     context.Meteor.call('posts.categories.position', event.target.value, (err, res) => {
       if (err) {
-        alert(err.message);
+        swal({
+          title: "保存失败",
+          text: err.message,
+          type: "error"
+        });
+      } else {
+        swal({
+          title: "保存成功",
+          type: "success"
+        });
+      }
+    });
+  },
+  changeTabsColor({ context }, event) {
+    const { swal, Meteor } =context;
+    Meteor.call('posts.categories.color', event.target.value, (err) => {
+      if (err) {
+        swal({
+          title: "修改失败",
+          text: err.message,
+          type: "error"
+        });
+      } else {
+        swal({
+          title: "修改成功",
+          type: "success"
+        });
       }
     });
   }
@@ -36,7 +62,8 @@ const data = ({ context }, onData) => {
   const configs = pkg.configs || { UI: '' };
   onData(null, {
     categories: configs.categories || [],
-    position: configs.UI.categoriesPosition || ''
+    position: configs.UI.categoriesPosition || '',
+    tabsColor: configs.UI.categoriesTabsColor || 'green'
   });
 };
 

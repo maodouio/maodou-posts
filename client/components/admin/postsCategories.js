@@ -8,11 +8,11 @@ export default (props) => {
     <div className="container">
       <div className="row">
         <div className="col-sm-12">
-          <h1>Posts categories</h1>
+          <h1>文章分类</h1>
           {
             props.categories.length > 0 ?
               props.categories.map((category, index) =>
-                <p key={index}>{category} <Link to="#" onClick={(e) => props.deleteCategory(category, e)}>Delete</Link></p>
+                <p key={index}>{category} <Link to="#" onClick={(e) => props.deleteCategory(category, e)}>删除</Link></p>
               ) :
               <Loading />
           }
@@ -28,20 +28,32 @@ export default (props) => {
       </div>
       <div className="row">
         <div className="col-sm-12">
-          <h4>Category Position</h4>
+          <h4>菜单位置</h4>
           <form onChange={props.changeTabsPosition}>
             <div className="form-group">
               <input type="radio" name="catePosition" id="radio1" value="top" checked={props.position === 'top'} />
               <label htmlFor="radio1">
-                Top
+                顶端
               </label>
             </div>
             <div className="form-group">
               <input type="radio" name="catePosition" id="radio2" value="bottom" checked={props.position === 'bottom'} />
               <label htmlFor="radio2">
-                Bottom
+                底端
               </label>
             </div>
+          </form>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-sm-12">
+          <h4>菜单颜色</h4>
+          <form>
+            <select value={props.tabsColor} onChange={props.changeTabsColor} className="form-control" name="color">
+              <option value="green">绿色</option>
+              <option value="red">红色</option>
+              <option value="black">黑色</option>
+            </select>
           </form>
         </div>
       </div>

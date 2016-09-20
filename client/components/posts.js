@@ -10,7 +10,7 @@ export default (props) => {
     <div style={{ paddingTop: '90px' }}>
       {
         props.configs && props.configs.UI.categoriesPosition === 'top' ?
-          <Tabs position="top" /> :
+          <Tabs position="top" color={props.configs.UI.categoriesTabsColor} /> :
           <div />
       }
       <div className="container">
@@ -59,7 +59,7 @@ export default (props) => {
       </div>
       {
         props.configs && props.configs.UI.categoriesPosition === 'bottom' ?
-          <Tabs position="bottom" /> :
+          <Tabs position="bottom" color={props.configs.UI.categoriesTabsColor} /> :
           <div />
       }
     </div>

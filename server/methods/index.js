@@ -44,6 +44,11 @@ export default (context) => {
       Packages.update({ name: 'posts' }, {
         $set: { 'configs.UI.categoriesPosition': category }
       })
+    },
+    'posts.categories.color'(color) {
+      Packages.update({ name: 'posts' }, {
+        $set: { 'configs.UI.categoriesTabsColor': color }
+      })
     }
   });
 };

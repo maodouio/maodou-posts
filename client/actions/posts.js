@@ -7,6 +7,9 @@ export default {
   changeCategory(context, cate) {
     return { type: 'CHANGE_POSTS_CATEGORY', cate };
   },
+  changeTabsColor() {
+
+  },
   addPost(context, category, coverUrl, title, content) {
     return () => {
       if (!coverUrl) {

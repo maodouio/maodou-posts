@@ -4,7 +4,7 @@ export default class extends React.Component {
 
   render() {
     return (
-      <div className={`posts-tab ${this.props.position}`}>
+      <div className={`posts-tab ${this.props.position} ${this.props.color}`}>
         <ul className="flex-container">
           {
             this.props.configs ?
