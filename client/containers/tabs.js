@@ -22,6 +22,10 @@ const subscription = ({ context }, onData) => {
   }
 };
 
+const mapStateToProps = (state) => ({
+  category: state.postsCategory
+});
+
 const depsToProps = (context, actions) => ({
   context,
   changeCategory: actions.posts.changeCategory
@@ -30,5 +34,6 @@ const depsToProps = (context, actions) => ({
 export default composeAll(
   withHandlers(userEvents),
   withTracker(subscription),
+  withRedux(mapStateToProps),
   useDeps(depsToProps)
 )(Tabs);

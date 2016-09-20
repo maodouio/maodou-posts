@@ -9,7 +9,13 @@ export default class extends React.Component {
           {
             this.props.configs ?
               this.props.configs.categories.map((cate, i) =>
-                <li key={i} onClick={(e) => this.props.changeCate(e, cate)} className="flex-item">{cate}</li>
+                <li
+                  key={i}
+                  onClick={(e) => this.props.changeCate(e, cate)}
+                  className={`${cate===this.props.category ? 'active' : ''} flex-item`}
+                >
+                  {cate}
+                </li>
               ) :
               <div />
           }
