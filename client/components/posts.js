@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import Tabs from '../containers/tabs';
 import Loading from 'client/components/common/loading';
+import moment from 'moment';
 
 export default (props) => {
   const T = props.context.T;
@@ -42,7 +43,7 @@ export default (props) => {
                         </Link>
                       </div>
                       <div className="panel-footer">
-                        Sep. 21, 2016
+                        {moment(post.createdAt).format('MM-DD-YYYY')}
                         {/*<span className="pull-right">*/}
                         {/*<i className="fa fa-comments-o" /> 22 <T.text text={{ key: 'comments' }} />*/}
                         {/*</span>*/}
