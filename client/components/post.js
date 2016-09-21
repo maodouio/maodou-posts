@@ -14,7 +14,7 @@ export default (props) => {
                   <h4>[{props.post.category}] {props.post.title}</h4>
                   <div className="text-muted small">
                     Created by: <span className="font-bold">Admin</span>&nbsp;
-                    {moment(post.createdAt).format('MM-DD-YYYY')}
+                    {moment(props.post.createdAt).format('MM-DD-YYYY')}
                   </div>
                 </div>
                 <div className="panel-body" dangerouslySetInnerHTML={{ __html: props.post.content }} />
