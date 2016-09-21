@@ -8,7 +8,8 @@ export default (props) => {
     <div className="container">
       <div className="row">
         <div className="col-sm-12">
-          <h1>文章分类</h1>
+          <h1>文章设置</h1>
+          <h4>文章分类</h4>
           {
             props.categories.length > 0 ?
               props.categories.map((category, index) =>
@@ -28,17 +29,36 @@ export default (props) => {
       </div>
       <div className="row">
         <div className="col-sm-12">
+          <h4>图片位置</h4>
+          <form onChange={props.changeImgPosition}>
+            <div className="form-group">
+              <input type="radio" name="imgPosition" id="radio1"  value="left" defaultChecked={props.imgPosition === 'left'} />
+              <label htmlFor="radio1">
+                左端
+              </label>
+            </div>
+            <div className="form-group">
+              <input type="radio" name="imgPosition" id="radio2"  value="right" defaultChecked={props.imgPosition === 'right'} />
+              <label htmlFor="radio2">
+                右端
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-sm-12">
           <h4>菜单位置</h4>
           <form onChange={props.changeTabsPosition}>
             <div className="form-group">
-              <input type="radio" name="catePosition" id="radio1" value="top" checked={props.position === 'top'} />
-              <label htmlFor="radio1">
+              <input type="radio" name="catePosition" id="radio3" value="top" defaultChecked={props.tabsPosition === 'top'} />
+              <label htmlFor="radio3">
                 顶端
               </label>
             </div>
             <div className="form-group">
-              <input type="radio" name="catePosition" id="radio2" value="bottom" checked={props.position === 'bottom'} />
-              <label htmlFor="radio2">
+              <input type="radio" name="catePosition" id="radio4" value="bottom" defaultChecked={props.tabsPosition === 'bottom'} />
+              <label htmlFor="radio4">
                 底端
               </label>
             </div>

@@ -21,8 +21,24 @@ const userEvents = {
       }
     });
   },
+  changeImgPosition({ context }, event) {
+    context.Meteor.call('posts.imgPosition', event.target.value, (err, res) => {
+      if (err) {
+        swal({
+          title: "保存失败",
+          text: err.message,
+          type: "error"
+        });
+      } else {
+        swal({
+          title: "保存成功",
+          type: "success"
+        });
+      }
+    });
+  },
   changeTabsPosition({ context }, event) {
-    context.Meteor.call('posts.categories.position', event.target.value, (err, res) => {
+    context.Meteor.call('posts.categories.tabsPosition', event.target.value, (err, res) => {
       if (err) {
         swal({
           title: "保存失败",
@@ -62,7 +78,8 @@ const data = ({ context }, onData) => {
   const configs = pkg.configs || { UI: '' };
   onData(null, {
     categories: configs.categories || [],
-    position: configs.UI.categoriesPosition || '',
+    imgPosition: configs.UI.listImgPosition || 'left',
+    tabsPosition: configs.UI.categoriesPosition || 'top',
     tabsColor: configs.UI.categoriesTabsColor || 'green'
   });
 };

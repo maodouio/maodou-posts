@@ -34,7 +34,7 @@ export default (props) => {
                       {/*</div>*/}
                       {/*</div>*/}
                       <div className="panel-body">
-                        <div className="pull-left cover-img-wrapper">
+                        <div className={`${props.configs.UI.listImgPosition === 'left' ? 'pull-left' : 'pull-right'} cover-img-wrapper`}>
                           <img style={{ width: '100%' }} src={post.coverUrl} alt="cover picture"/>
                         </div>
                         <Link to={`/post/${post._id}`}>

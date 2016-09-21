@@ -40,9 +40,14 @@ export default (context) => {
         $set: { category: '' }
       });
     },
-    'posts.categories.position'(category) {
+    'posts.imgPosition'(position) {
       Packages.update({ name: 'posts' }, {
-        $set: { 'configs.UI.categoriesPosition': category }
+        $set: { 'configs.UI.listImgPosition': position }
+      })
+    },
+    'posts.categories.tabsPosition'(position) {
+      Packages.update({ name: 'posts' }, {
+        $set: { 'configs.UI.categoriesPosition': position }
       })
     },
     'posts.categories.color'(color) {

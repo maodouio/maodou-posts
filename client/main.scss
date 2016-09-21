@@ -1,7 +1,12 @@
 .cover-img-wrapper {
-  margin-right: 10px;
   width: 100px;
   height: 100px;
+  &.pull-left {
+    margin-right: 10px;
+  }
+  &.pull-right {
+    margin-left: 10px;
+  }
 }
 .posts-tab {
   z-index: 1;
