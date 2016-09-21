@@ -6,7 +6,7 @@ export default (props) => {
     <div className="admin-package-wrapper row">
       <div className="col-sm-12">
         <h1>添加新文章</h1>
-        <form onSubmit={props.submitNewPost}>
+        <form onSubmit={(e) => props.dispatch(props.addPost(e, props.coverUrl))}>
           <div className="form-group">
             <label htmlFor="select-category">选择分类</label>
             <select id="select-category" className="form-control" name="category">

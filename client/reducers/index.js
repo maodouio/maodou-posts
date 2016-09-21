@@ -10,7 +10,7 @@ export default {
   postsCategory(state = '', action) {
     switch (action.type){
       case 'CHANGE_POSTS_CATEGORY':
-        return action.cate;
+        return action.category;
       default:
         return state;
     }

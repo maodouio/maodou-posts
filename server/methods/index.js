@@ -37,7 +37,7 @@ export default (context) => {
         }
       });
       Posts.update({ category }, {
-        $set: { category: '' }
+        $set: { category: 'none' }
       });
     },
     'posts.imgPosition'(position) {

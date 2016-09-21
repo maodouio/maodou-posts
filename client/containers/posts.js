@@ -1,18 +1,7 @@
 import { useDeps } from 'react-simple-di';
-import { compose, withHandlers, withTracker, withRedux, composeAll } from 'react-komposer-plus';
+import { compose, withTracker, withRedux, composeAll } from 'react-komposer-plus';
 
 import Posts from '../components/posts';
-
-const userEvents = {
-  deletePost({ context }, id, event)  {
-    event.preventDefault();
-    context.Meteor.call('posts.delete', id, (err) => {
-      if (err) {
-        alert(err.message);
-      }
-    });
-  }
-};
 
 const subscription = ({ context, category }, onData) => {
   const { Meteor, Collections } = context;
@@ -40,7 +29,6 @@ const depsToProps = (context, actions) => ({
 });
 
 export default composeAll(
-  withHandlers(userEvents),
   withTracker(subscription),
   withRedux(mapStateToProps),
   useDeps(depsToProps)

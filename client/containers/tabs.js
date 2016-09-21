@@ -1,14 +1,7 @@
 import { useDeps } from 'react-simple-di';
-import { compose, withHandlers, withTracker, withRedux, composeAll } from 'react-komposer-plus';
+import { compose, withTracker, withRedux, composeAll } from 'react-komposer-plus';
 
 import Tabs from '../components/tabs';
-
-const userEvents = {
-  changeCate({ context, changeCategory }, event, category)  {
-    event.preventDefault();
-    context.dispatch(changeCategory(category))
-  }
-};
 
 const subscription = ({ context }, onData) => {
   const { Meteor, Collections } = context;
@@ -28,11 +21,11 @@ const mapStateToProps = (state) => ({
 
 const depsToProps = (context, actions) => ({
   context,
+  dispatch: context.dispatch,
   changeCategory: actions.posts.changeCategory
 });
 
 export default composeAll(
-  withHandlers(userEvents),
   withTracker(subscription),
   withRedux(mapStateToProps),
   useDeps(depsToProps)

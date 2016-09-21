@@ -13,11 +13,11 @@ export default (props) => {
           {
             props.categories.length > 0 ?
               props.categories.map((category, index) =>
-                <p key={index}>{category} <Link to="#" onClick={(e) => props.deleteCategory(category, e)}>删除</Link></p>
+                <p key={index}>{category} <a onClick={(e) => props.dispatch(props.deleteCategory(e, category))}>删除</a></p>
               ) :
               <Loading />
           }
-          <form onSubmit={props.addCategory}>
+          <form onSubmit={(e) => props.dispatch(props.addCategory(e))}>
             <div className="input-group">
               <input className="form-control" type="text" name="category" />
               <span className="input-group-btn">
@@ -30,7 +30,7 @@ export default (props) => {
       <div className="row">
         <div className="col-sm-12">
           <h4>图片位置</h4>
-          <form onChange={props.changeImgPosition}>
+          <form onChange={(e) => props.dispatch(props.changeImgPosition(e))}>
             <div className="form-group">
               <input type="radio" name="imgPosition" id="radio1"  value="left" defaultChecked={props.imgPosition === 'left'} />
               <label htmlFor="radio1">
@@ -49,7 +49,7 @@ export default (props) => {
       <div className="row">
         <div className="col-sm-12">
           <h4>菜单位置</h4>
-          <form onChange={props.changeTabsPosition}>
+          <form onChange={(e) => props.dispatch(props.changeTabsPosition(e))}>
             <div className="form-group">
               <input type="radio" name="catePosition" id="radio3" value="top" defaultChecked={props.tabsPosition === 'top'} />
               <label htmlFor="radio3">
@@ -69,7 +69,7 @@ export default (props) => {
         <div className="col-sm-12">
           <h4>菜单颜色</h4>
           <form>
-            <select value={props.tabsColor} onChange={props.changeTabsColor} className="form-control" name="color">
+            <select value={props.tabsColor} onChange={(e) => props.dispatch(props.changeTabsColor(e))} className="form-control" name="color">
               <option value="green">绿色</option>
               <option value="red">红色</option>
               <option value="black">黑色</option>

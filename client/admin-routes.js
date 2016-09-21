@@ -1,4 +1,4 @@
-import PostsAdmin from './containers/admin';
+import PostsAdmin from './components/admin';
 import PostsList from './containers/posts';
 import PostsAdd from './containers/admin/postsAdd';
 import PostsCategories from './containers/admin/postsCategories';

@@ -1,76 +1,7 @@
 import { useDeps } from 'react-simple-di';
-import { compose, withHandlers, withTracker, withRedux, composeAll } from 'react-komposer-plus';
+import { compose, withTracker, withRedux, composeAll } from 'react-komposer-plus';
 
 import PostsCategories from '../../components/admin/postsCategories';
-
-const userEvents = {
-  addCategory({ context }, event)  {
-    event.preventDefault();
-    const category = event.target.category.value;
-    context.Meteor.call('posts.categories.add', category, (err) => {
-      if (err) {
-        alert(err.message);
-      }
-    });
-  },
-  deleteCategory({ context }, category, event)  {
-    event.preventDefault();
-    context.Meteor.call('posts.categories.delete', category, (err) => {
-      if (err) {
-        alert(err.message);
-      }
-    });
-  },
-  changeImgPosition({ context }, event) {
-    context.Meteor.call('posts.imgPosition', event.target.value, (err, res) => {
-      if (err) {
-        swal({
-          title: "保存失败",
-          text: err.message,
-          type: "error"
-        });
-      } else {
-        swal({
-          title: "保存成功",
-          type: "success"
-        });
-      }
-    });
-  },
-  changeTabsPosition({ context }, event) {
-    context.Meteor.call('posts.categories.tabsPosition', event.target.value, (err, res) => {
-      if (err) {
-        swal({
-          title: "保存失败",
-          text: err.message,
-          type: "error"
-        });
-      } else {
-        swal({
-          title: "保存成功",
-          type: "success"
-        });
-      }
-    });
-  },
-  changeTabsColor({ context }, event) {
-    const { swal, Meteor } =context;
-    Meteor.call('posts.categories.color', event.target.value, (err) => {
-      if (err) {
-        swal({
-          title: "修改失败",
-          text: err.message,
-          type: "error"
-        });
-      } else {
-        swal({
-          title: "修改成功",
-          type: "success"
-        });
-      }
-    });
-  }
-};
 
 const data = ({ context }, onData) => {
   const { Collections } = context;
@@ -85,11 +16,16 @@ const data = ({ context }, onData) => {
 };
 
 const depsToProps = (context, actions) => ({
-  context
+  context,
+  dispatch: context.dispatch,
+  addCategory: actions.posts.addCategory,
+  deleteCategory: actions.posts.deleteCategory,
+  changeImgPosition: actions.posts.changeImgPosition,
+  changeTabsPosition: actions.posts.changeTabsPosition,
+  changeTabsColor: actions.posts.changeTabsColor
 });
 
 export default composeAll(
-  withHandlers(userEvents),
   withTracker(data),
   useDeps(depsToProps)
 )(PostsCategories);

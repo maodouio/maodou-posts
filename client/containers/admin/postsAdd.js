@@ -6,16 +6,6 @@ import 'qiniu-js/dist/qiniu.min';
 
 import PostsAdd from '../../components/admin/postsAdd';
 
-const userEvents = {
-  submitNewPost({ context, coverUrl, addPost }, event) {
-    event.preventDefault();
-    const category = event.target.category.value;
-    const title = event.target.title.value;
-    const content = $('#editor').summernote('code');
-    context.dispatch(addPost(category, coverUrl, title, content));
-  }
-};
-
 const lifeCycle = {
   componentDidMount() {
     const qiniuDomain = this.props.qiniuDomain;
@@ -119,14 +109,13 @@ const mapStateToProps = (state)=> ({
 
 const depsToProps = (context, actions) => ({
   context,
-  qiniuDomain: context.configs.core.qiniu.DOMAIN_NAME,
   dispatch: context.dispatch,
+  qiniuDomain: context.configs.core.qiniu.DOMAIN_NAME,
   addCover: actions.posts.addCover,
   addPost: actions.posts.addPost
 });
 
 export default composeAll(
-  withHandlers(userEvents),
   withLifecycle(lifeCycle),
   withTracker(data),
   withRedux(mapStateToProps),
