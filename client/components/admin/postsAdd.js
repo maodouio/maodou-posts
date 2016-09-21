@@ -5,7 +5,7 @@ export default (props) => {
   return (
     <div className="admin-package-wrapper row">
       <div className="col-sm-12">
-        <h1>Add Post</h1>
+        <h1>添加新文章</h1>
         <form onSubmit={props.submitNewPost}>
           <div className="form-group">
             <label htmlFor="select-category">选择分类</label>
@@ -21,7 +21,7 @@ export default (props) => {
           </div>
 
           <div id="upload-container">
-            <LaddaButton className="btn btn-success" loading={false} id="pickfiles" buttonStyle="zoom-in">Choose file</LaddaButton>
+            <LaddaButton className="btn btn-success" loading={false} id="pickfiles" buttonStyle="zoom-in">上传封面</LaddaButton>
           </div>
           {
             props.coverUrl ?
@@ -29,10 +29,10 @@ export default (props) => {
               <span />
           }
           <br/>
-          <input className="form-control" type="text" placeholder="title" name="title" />
+          <input className="form-control" type="text" placeholder="标题" name="title" />
           <br />
           <div id="editor" />
-          <button className="btn btn-default" type="submit">Submit</button>
+          <button className="btn btn-default" type="submit">发布</button>
         </form>
       </div>
     </div>
