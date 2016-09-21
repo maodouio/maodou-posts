@@ -23,25 +23,25 @@ export default {
     if (Collections.Posts.find().count() < 4) {
       Collections.Posts.insert({
         title: 'Relay: State of the State',
-        category: 'cate1',
+        category: '初创公司',
         coverUrl: 'http://odhge55gv.bkt.clouddn.com/FvY1XBtXxegqJh2fF-o0GGpksAn5',
         content: 'This month marks a year since we released Relay and we\'d like to share an update on the project and what\'s next.',
       });
       Collections.Posts.insert({
         title: 'A Year In Review',
-        category: 'cate1',
+        category: '初创公司',
         coverUrl: 'http://odhge55gv.bkt.clouddn.com/FvY1XBtXxegqJh2fF-o0GGpksAn5',
         content: 'This month marks a year since we released Relay and we\'d like to share an update on the project and what\'s next.',
       });
       Collections.Posts.insert({
         title: 'Retrospective & Roadmap',
-        category: 'cate2',
+        category: '创业学院',
         coverUrl: 'http://odhge55gv.bkt.clouddn.com/FvY1XBtXxegqJh2fF-o0GGpksAn5',
         content: 'This month marks a year since we released Relay and we\'d like to share an update on the project and what\'s next.',
       });
       Collections.Posts.insert({
         title: 'Empowering the Community',
-        category: 'cate3',
+        category: '孵化服务',
         coverUrl: 'http://odhge55gv.bkt.clouddn.com/FvY1XBtXxegqJh2fF-o0GGpksAn5',
         content: 'This month marks a year since we released Relay and we\'d like to share an update on the project and what\'s next.',
 
