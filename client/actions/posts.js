@@ -10,7 +10,7 @@ export default {
   },
 
   /**** Admin Actions ****/
-  addPost({ Meteor, swal }, event, coverUrl) {
+  addPost({ Meteor, swal, toastr }, event, coverUrl) {
     return () => {
       event.preventDefault();
       const category = event.target.category.value;
@@ -21,11 +21,7 @@ export default {
       }
       Meteor.call('posts.add', category, coverUrl, title, content, (err) => {
         if (err) {
-          swal({
-            title: '发布失败',
-            text: err.message,
-            type: 'error'
-          });
+          toastr["error"]("发布失败", "Error!");
         } else {
           swal({
             title: '发布成功',
@@ -46,65 +42,40 @@ export default {
       event.preventDefault();
       Meteor.call('post.delete', id, (err) => {
         if (err) {
-          swal({
-            title: '删除失败',
-            text: err.message,
-            type: 'error'
-          });
+          toastr["error"]("删除失败", "Error!");
         }
       });
     }
   },
-  changeImgPosition({ Meteor, swal }, event) {
+  changeImgPosition({ Meteor, toastr }, event) {
     return () => {
       Meteor.call('posts.imgPosition', event.target.value, (err) => {
         if (err) {
-          swal({
-            title: '保存失败',
-            text: err.message,
-            type: 'error'
-          });
+          toastr["error"]("删除失败", "Error!");
         } else {
-          swal({
-            title: '保存成功',
-            type: 'success'
-          });
+          toastr["success"]("保存成功", "Success!");
         }
       });
     };
   },
-  changeTabsPosition({ Meteor, swal }, event) {
+  changeTabsPosition({ Meteor, toastr }, event) {
     return (dispatch) => {
       Meteor.call('posts.categories.tabsPosition', event.target.value, (err) => {
         if (err) {
-          swal({
-            title: '保存失败',
-            text: err.message,
-            type: 'error'
-          });
+          toastr["error"]("保存失败", "Error!");
         } else {
-          swal({
-            title: '保存成功',
-            type: 'success'
-          });
+          toastr["success"]("保存成功", "Success!");
         }
       });
     };
   },
-  changeTabsColor({ Meteor, swal }, event) {
+  changeTabsColor({ Meteor, toastr }, event) {
     return (dispatch) => {
       Meteor.call('posts.categories.color', event.target.value, (err) => {
         if (err) {
-          swal({
-            title: '修改失败',
-            text: err.message,
-            type: 'error'
-          });
+          toastr["error"]("修改失败", "Error!");
         } else {
-          swal({
-            title: '修改成功',
-            type: 'success'
-          });
+          toastr["success"]("保存成功", "Success!");
         }
       });
     };
