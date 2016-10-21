@@ -7,7 +7,7 @@ import moment from 'moment';
 export default (props) => {
   const T = props.context.T;
   return (
-    <div style={{ paddingTop: '90px' }}>
+    <div style={{ paddingTop: '50px' }}>
       {
         props.configs && props.configs.UI.categoriesPosition === 'top' ?
           <Tabs position="top" color={props.configs.UI.categoriesTabsColor} /> :
@@ -37,10 +37,12 @@ export default (props) => {
                         <div className={`${props.configs.UI.listImgPosition === 'left' ? 'pull-left' : 'pull-right'} cover-img-wrapper`}>
                           <img style={{ width: '100%' }} src={post.coverUrl} alt="cover picture"/>
                         </div>
-                        <Link to={`/post/${post._id}`}>
-                          <h4>{post.title}</h4>
-                          <p>{post.plainContent}</p>
-                        </Link>
+                        <div className="cont">
+                          <Link to={`/post/${post._id}`}>
+                            <h4 className="post-title">{post.title}</h4>
+                            <p className="post-desc">{post.plainContent}</p>
+                          </Link>
+                        </div>
                       </div>
                       <div className="panel-footer">
                         {moment(post.createdAt).format('MM-DD-YYYY')}
